@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youtube/model/Video.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 import '../Api.dart';
 
@@ -23,7 +23,30 @@ class _InicioState extends State<Inicio> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print("chamado 1 - initState");
+  }
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    print("chamado 2 - didChangeDependencies");
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    print("chamdo 4 - dispose");
+  }
+
+  @override
   Widget build(BuildContext context) {
+
+    print("chamado 3 - build");
 
 
 
@@ -51,15 +74,7 @@ class _InicioState extends State<Inicio> {
                     return GestureDetector(
                       onTap: (){
 
-                        //incluir player de vídeo
-                        YoutubePlayerBuilder(
-                          player: YoutubePlayer(
-                            controller: YoutubePlayerController.of(context)!,
-                          ),
-                          builder: (context, widget){
-                            return Container();
-                          },
-                        );
+
 
                       },
                       child: Column(

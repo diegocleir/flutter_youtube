@@ -21,24 +21,24 @@ class Api{
         '&key=$CHAVE_YOUTUBEAPI'
         '&q=$pesquisa';
 
-    print(url);
+    //print(url);
 
     http.Response response = await http.get(
         Uri.parse(url)
     );
 
+    List<Video> videos = [];
+
     if( response.statusCode == 200 ){
 
       Map<String, dynamic> dadosJson = json.decode( response.body );
 
-      List<Video> videos = dadosJson["items"].map<Video>(
+      videos = dadosJson["items"].map<Video>(
               (map){
             return Video.fromJson(map);
             //return Video.converterJson(map);
           }
       ).toList();
-
-      return videos;
 
       //print("Resultado: " + videos.toString() );
 
@@ -53,5 +53,7 @@ class Api{
       print("resultado: " + response.statusCode.toString());
 
     }
+
+    return videos;
   }
 }
