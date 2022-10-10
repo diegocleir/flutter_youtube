@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youtube/model/Video.dart';
+import 'package:youtube/telas/CustomYoutubePlayer.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 import '../Api.dart';
@@ -74,7 +75,12 @@ class _InicioState extends State<Inicio> {
                     return GestureDetector(
                       onTap: (){
 
-
+                        Navigator.push(
+                            context,
+                            PageRouteBuilder(pageBuilder: (context, animation, animation2){
+                              return CustomYoutubePlayer(video.id!);
+                            })
+                        );
 
                       },
                       child: Column(
